@@ -28,7 +28,10 @@ const AllProducts = () => {
                   <Link to={`/products/${product.sku}`}>
                     <div>{product.fullName || 'Name not available'}</div>
                   </Link>
-                  <div>Author: {product.author || 'not available'}</div>
+                  <div>Author: {product.author || 'Not available'}</div>
+                  <div>
+                    Prices: {product.formattedPrices || 'Not available'}
+                  </div>
                 </div>
               </div>
             );
