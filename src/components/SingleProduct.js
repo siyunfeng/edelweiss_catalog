@@ -37,23 +37,31 @@ const SingleProduct = () => {
   }
 
   return (
-    <main>
-      <div>
-        <img src={coverImage || defaultCoverImage} alt='product cover' />
-        {sku}
-        {fullName}
-        {author}
-        {series}
-        {supplier}
-        {formattedPrices}
-        {pages}
-        {category}
-        {categoryCode}
-        {format}
-        {formatCode}
-        {measurements}
-        {language}
-        {industryCategory}
+    <main className='single-product-container'>
+      <div className='product-detail-container'>
+        <div className='detail-cover-container'>
+          <img
+            src={coverImage || defaultCoverImage}
+            className='detail-cover-image'
+            alt='product cover'
+          />
+        </div>
+        <div className='product-detail-basic'>
+          {fullName ? <div className='book-name'>{fullName}</div> : ''}
+          {sku ? <div>SKU: {sku}</div> : ''}
+          {author ? <div>Author: {author}</div> : ''}
+          {formattedPrices ? <div>Prices: {formattedPrices}</div> : ''}
+          {language ? <div>Language: {language}</div> : ''}
+          {series ? <div>Series: {series}</div> : ''}
+          {category ? <div>Category: {category}</div> : ''}
+          {categoryCode ? <div>Category Code: {categoryCode}</div> : ''}
+          {pages ? <div>Pages: {pages}</div> : ''}
+          {supplier ? <div>Supplier: {supplier}</div> : ''}
+          {format ? <div>Format: {format}</div> : ''}
+          {formatCode ? <div>Format Code:{formatCode}</div> : ''}
+          {measurements ? <div>Measurements:{measurements}</div> : ''}
+          {industryCategory ? <div>{industryCategory}</div> : ''}
+        </div>
       </div>
     </main>
   );
