@@ -22,6 +22,7 @@ const AllProducts = () => {
                 <img
                   src={coverImage || defaultCoverImage}
                   alt='product cover'
+                  className='coverImage'
                 />
                 <div className='catalog-info'>
                   <Link to={`/products/${product.sku}`}>
