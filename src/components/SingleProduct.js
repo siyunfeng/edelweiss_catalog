@@ -13,8 +13,6 @@ const SingleProduct = () => {
     author,
     series,
     supplier,
-    pubDate,
-    onSaleDate,
     formattedPrices,
     pages,
     category,
@@ -60,7 +58,11 @@ const SingleProduct = () => {
           {format ? <div>Format: {format}</div> : ''}
           {formatCode ? <div>Format Code:{formatCode}</div> : ''}
           {measurements ? <div>Measurements:{measurements}</div> : ''}
-          {industryCategory ? <div>{industryCategory}</div> : ''}
+          {industryCategory ? (
+            <div>Industry Category: {industryCategory}</div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </main>
