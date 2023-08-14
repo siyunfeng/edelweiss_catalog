@@ -12,3 +12,35 @@
   color: white;
 }
 
+/* Single product page */
+
+.single-product-container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.product-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+  margin: 30px auto;
+  border: 1px solid rgba(200, 200, 200, 0.2);
+  border-radius: 15px;
+  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
+}
+
+.product-detail-container > div {
+  margin: 40px 25px;
+}
+
+.detail-cover-container {
+  width: 360px;
+  height: 480px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.book-name {
+  font-weight: bold;
+}
