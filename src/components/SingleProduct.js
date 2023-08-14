@@ -4,7 +4,7 @@ import defaultCoverImage from '../images/imageNotAvailable.png';
 
 const SingleProduct = () => {
   const { productId } = useParams();
-  const { products } = data;
+  const { products, catalogID } = data;
   const product = products.find((product) => product.sku === productId);
 
   let {
@@ -36,6 +36,9 @@ const SingleProduct = () => {
 
   return (
     <main className='single-product-container'>
+      <Link to={`/catalogs/${catalogID}`}>
+        <button>Back to Catalog List</button>
+      </Link>
       <div className='product-detail-container'>
         <div className='detail-cover-container'>
           <img
