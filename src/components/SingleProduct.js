@@ -22,6 +22,8 @@ const SingleProduct = () => {
     measurements,
     language,
     industryCategory,
+    pubDate,
+    onSaleDate,
   } = product;
 
   let coverImage = defaultCoverImage;
@@ -34,6 +36,18 @@ const SingleProduct = () => {
     }
   }
 
+  const dateFormatting = (date) => {
+    if (date) {
+      let YYYY = date.slice(0, 4);
+      let MM = date.slice(5, 7);
+      let DD = date.slice(8, 10);
+      return `${MM}/${DD}/${YYYY}`;
+    }
+  };
+
+  pubDate = dateFormatting(pubDate);
+  onSaleDate = dateFormatting(onSaleDate);
+
   return (
     <main className='single-product-container'>
       <Link to={`/catalogs/${catalogID}`}>
@@ -45,10 +59,14 @@ const SingleProduct = () => {
             src={coverImage || defaultCoverImage}
             className='detail-cover-image'
             alt='product cover'
+            onError={(event) => {
+              event.target.onerror = null;
+              event.target.src = defaultCoverImage;
+            }}
           />
         </div>
         <div className='product-detail-basic'>
-          {fullName ? <div className='book-name'>{fullName}</div> : ''}
+          {fullName ? <div className='book-name title'>{fullName}</div> : ''}
           {sku ? <div>SKU: {sku}</div> : ''}
           {author ? <div>Author: {author}</div> : ''}
           {formattedPrices ? <div>Prices: {formattedPrices}</div> : ''}
@@ -58,6 +76,8 @@ const SingleProduct = () => {
           {categoryCode ? <div>Category Code: {categoryCode}</div> : ''}
           {pages ? <div>Pages: {pages}</div> : ''}
           {supplier ? <div>Supplier: {supplier}</div> : ''}
+          {pubDate ? <div>Publish Date: {pubDate}</div> : ''}
+          {onSaleDate ? <div>On Sale Date: {onSaleDate}</div> : ''}
           {format ? <div>Format: {format}</div> : ''}
           {formatCode ? <div>Format Code:{formatCode}</div> : ''}
           {measurements ? <div>Measurements:{measurements}</div> : ''}
