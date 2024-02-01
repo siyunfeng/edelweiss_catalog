@@ -1,6 +1,7 @@
 import data from '../data.json';
 import { Link, useParams } from 'react-router-dom';
 import defaultCoverImage from '../images/imageNotAvailable.png';
+import { dateFormatting } from '../helperFuns';
 
 const SingleProduct = () => {
   const { productId } = useParams();
@@ -24,11 +25,12 @@ const SingleProduct = () => {
     industryCategory,
     pubDate,
     onSaleDate,
+    images,
   } = product;
 
   let coverImage = defaultCoverImage;
-  if (product.images && product.images.length) {
-    let jacketCover = product.images.filter((cover) =>
+  if (images && images.length) {
+    let jacketCover = images.filter((cover) =>
       cover.uri.includes('jacket_covers')
     );
     if (jacketCover[0]) {
@@ -36,14 +38,7 @@ const SingleProduct = () => {
     }
   }
 
-  const dateFormatting = (date) => {
-    if (date) {
-      let YYYY = date.slice(0, 4);
-      let MM = date.slice(5, 7);
-      let DD = date.slice(8, 10);
-      return `${MM}/${DD}/${YYYY}`;
-    }
-  };
+  images = images.filter((image) => !image.uri.includes('jacket_covers'));
 
   pubDate = dateFormatting(pubDate);
   onSaleDate = dateFormatting(onSaleDate);
@@ -66,27 +61,56 @@ const SingleProduct = () => {
           />
         </div>
         <div className='product-detail-basic'>
-          {fullName ? <div className='book-name title'>{fullName}</div> : ''}
+          {fullName ? (
+            <div className='book-name title'>{fullName}</div>
+          ) : (
+            <div className='unavailable-data'>
+              Book name is missing at this moment
+            </div>
+          )}
+          {author ? <div>by {author}</div> : ''}
+          {category ? <div>{category}</div> : ''}
+          {pubDate ? <div>{pubDate}</div> : ''}
+          {formattedPrices ? <div>{formattedPrices}</div> : ''}
+          {pages ? (
+            <div>
+              {pages} {pages !== '0' ? 'pages' : 'page'}{' '}
+            </div>
+          ) : (
+            ''
+          )}
+          {measurements ? <div>{measurements}</div> : ''}
           {sku ? <div>SKU: {sku}</div> : ''}
-          {author ? <div>Author: {author}</div> : ''}
-          {formattedPrices ? <div>Prices: {formattedPrices}</div> : ''}
+
           {language ? <div>Language: {language}</div> : ''}
           {series ? <div>Series: {series}</div> : ''}
-          {category ? <div>Category: {category}</div> : ''}
           {categoryCode ? <div>Category Code: {categoryCode}</div> : ''}
-          {pages ? <div>Pages: {pages}</div> : ''}
           {supplier ? <div>Supplier: {supplier}</div> : ''}
-          {pubDate ? <div>Publish Date: {pubDate}</div> : ''}
-          {onSaleDate ? <div>On Sale Date: {onSaleDate}</div> : ''}
+          {onSaleDate ? <div>On Sale: {onSaleDate}</div> : ''}
           {format ? <div>Format: {format}</div> : ''}
           {formatCode ? <div>Format Code:{formatCode}</div> : ''}
-          {measurements ? <div>Measurements:{measurements}</div> : ''}
           {industryCategory ? (
             <div>Industry Category: {industryCategory}</div>
           ) : (
             ''
           )}
         </div>
+        {images.length ? (
+          <div className='detail-images-container'>
+            {images.map((image, i) => {
+              return (
+                <img
+                  className='each-detail-image'
+                  src={image.uri}
+                  alt={image.caption}
+                  key={i}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </main>
   );

@@ -1,6 +1,7 @@
 import data from '../data.json';
 import { Link } from 'react-router-dom';
 import defaultCoverImage from '../images/imageNotAvailable.png';
+import { dateFormatting } from '../helperFuns';
 
 const AllProducts = () => {
   const { products } = data;
@@ -36,14 +37,37 @@ const AllProducts = () => {
                   />
                   <div className='catalog-info'>
                     <Link to={`/products/${product.sku}`}>
-                      <div className='title'>
-                        {product.fullName || 'Name not available'}
-                      </div>
+                      {product.name ? (
+                        <div className='title'>{product.fullName}</div>
+                      ) : (
+                        <div className='unavailable-data'>
+                          Book name is missing at this moment
+                        </div>
+                      )}
                     </Link>
-                    <div>Author: {product.author || 'Not available'}</div>
-                    <div>
-                      Prices: {product.formattedPrices || 'Not available'}
-                    </div>
+                    {product.author ? (
+                      <div>
+                        by <strong>{product.author}</strong>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    {product.pubDate ? (
+                      <div>{dateFormatting(product.pubDate)}</div>
+                    ) : (
+                      ''
+                    )}
+                    {product.formattedPrices ? (
+                      <div>{product.formattedPrices}</div>
+                    ) : (
+                      ''
+                    )}
+                    {product.formattedPrices ? <div></div> : ''}
+                    {product.formattedPrices ? <div></div> : ''}
+                    {product.formattedPrices ? <div></div> : ''}
+                    <Link to={`/products/${product.sku}`}>
+                      <div className='learn-more'>Learn more</div>
+                    </Link>
                   </div>
                 </div>
               );

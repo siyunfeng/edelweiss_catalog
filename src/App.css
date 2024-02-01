@@ -98,11 +98,12 @@ button:hover {
 .product-detail-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 100%;
   gap: 30px;
   margin: 30px auto;
+  background-color: var(--colorLightGrey);
   border: 1px solid rgba(200, 200, 200, 0.2);
-  border-radius: 15px;
   box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
 }
 
@@ -132,6 +133,32 @@ button:hover {
   font-weight: bold;
 }
 
+.unavailable-data {
+  color: red;
+}
+
+.detail-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+  background-color: white;
+  border: 2px solid rgba(200, 200, 200, 0.2);
+}
+
+img.each-detail-image {
+  width: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.15), 4px 4px 2px 2px rgba(128, 128, 128, 0.1);
+}
+
+img.each-detail-image:hover {
+  transform: scale(1.03);
+}
+
 /* All products page */
 
 .all-products-container {
@@ -152,7 +179,7 @@ button:hover {
   transition: transform 0.3s;
   background-color: #f9f9f9;
   border: 1px solid rgba(200, 200, 200, 0.2);
-  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
+  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(107, 107, 107, 0.06);
 }
 
 .each-product-container:hover {
@@ -175,8 +202,10 @@ button:hover {
 .catalog-info {
   display: flex;
   flex-direction: column;
+  padding: 2px 15px;
 }
 
-.catalog-info div {
-  padding: 2px 15px;
+.learn-more {
+  font-weight: 600;
+  color: var(--colorNavy);
 }
