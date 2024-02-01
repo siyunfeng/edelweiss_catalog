@@ -1,15 +1,25 @@
+:root {
+  --colorNavy: #005373;
+  --colorLightGrey: #f9f9f9;
+  --colorDarkGrey: rgb(66, 66, 66);
+}
+
 .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(66, 66, 66);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+* {
+  font-size: 13px;
 }
 
 a {
@@ -18,10 +28,64 @@ a {
   font-weight: bold;
 }
 
+.App-logo-container {
+  margin: 10px;
+}
+
+.App-logo {
+  height: 26px;
+  margin: 5px;
+}
+
 .catalogs-container {
   display: flex;
   width: 80%;
-  margin: 20px auto;
+  margin: 30px auto;
+}
+
+.each-catalog-container {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 450px;
+  background-color: #f9f9f9;
+  border: 1px solid rgba(200, 200, 200, 0.2);
+  transition: transform 0.3s;
+  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
+}
+
+.each-catalog-container img {
+  width: 230px;
+  margin: 10px auto;
+}
+
+.each-catalog-container:hover {
+  transform: scale(1.03);
+}
+
+.title {
+  color: var(--colorNavy);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.back-button-container {
+  width: 80%;
+  margin: 30px auto;
+}
+
+button {
+  color: white;
+  background-color: var(--colorNavy);
+  font-weight: bold;
+  padding: 8px 20px;
+  border: 2px solid var(--colorNavy);
+  box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
+}
+
+button:hover {
+  color: var(--colorLightGrey);
+  background-color: var(--colorDarkGrey);
 }
 
 /* Single product page */
@@ -60,6 +124,10 @@ a {
   margin: auto;
 }
 
+.product-detail-basic div{
+  margin: 5px 0;
+}
+
 .book-name {
   font-weight: bold;
 }
@@ -72,6 +140,8 @@ a {
   justify-content: center;
   align-items: center;
   gap: 50px;
+  margin: 30px auto;
+  width: 80%;
 }
 
 .each-product-container {
@@ -79,9 +149,14 @@ a {
   flex-direction: column;
   width: 300px;
   height: 500px;
+  transition: transform 0.3s;
+  background-color: #f9f9f9;
   border: 1px solid rgba(200, 200, 200, 0.2);
-  border-radius: 15px;
   box-shadow: 2px 2px 1px 1px rgba(128, 128, 128, 0.08), 3px 3px 2px 2px rgba(128, 128, 128, 0.06);
+}
+
+.each-product-container:hover {
+  transform: scale(1.03);
 }
 
 .coverImage {
@@ -95,4 +170,13 @@ a {
   display: flex;
   flex-direction: column;
   width: 90%;
+}
+
+.catalog-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-info div {
+  padding: 2px 15px;
 }
